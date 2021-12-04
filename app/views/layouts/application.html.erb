@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Taskunz</title>
+    <title>TASKURU</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">タスク管理</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">タスク登録</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">タスク一覧</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="#">アカウント詳細</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="#">ログアウト</a>
+  </li>
+</ul>
+    </header>
     <%= yield %>
-  </body>
 </html>
