@@ -12,4 +12,5 @@ class Task < ApplicationRecord
   #   if keyword != nil
   #     where("title like?", "%#{keyword}%")
   # end
+  belongs_to :user
 end
