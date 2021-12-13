@@ -2,13 +2,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy  ]
 
   def index
-    @tasks = Task.all.includes(:task).order(created_at: :desc).page(params[:page])
+    @tasks = current_user.tasks
+    # @tasks = Task.all.includes(:task).order(created_at: :desc).page(params[:page])
     if params[:sort_expired]
-      @tasks = Task.order(deadline: :desc).page(params[:page])
+      @tasks = @tasks.order(deadline: :desc).page(params[:page])
     elsif params[:sort_2]
-      @tasks = Task.order(priority: :asc).page(params[:page])
+      @tasks = @tasks.order(priority: :asc).page(params[:page])
     else
-      @tasks = Task.order(created_at: :desc).page(params[:page])
+      @tasks = @tasks.order(created_at: :desc).page(params[:page])
     end
 
     if params[:title].present? && params[:status].present?
@@ -22,6 +23,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @task = current_user.tasks.find(params[:id])
   end
 
   # GET /tasks/new
@@ -35,7 +37,8 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    # @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
@@ -50,6 +53,7 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
+    task = current_user.tasks.find(params[:id])
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: "Task was successfully updated." }
@@ -73,7 +77,8 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      # @task = Task.find(params[:id])
+      @task = current_user.tasks.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

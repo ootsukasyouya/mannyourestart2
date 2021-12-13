@@ -1,2 +1,29 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<div class="container-fruid">
+  <table class="table table-striped">
+    <p id="notice"><%= notice %></p>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>日付</th>
+      <th>進行状態</th>
+      <th>優先度</th>
+      <th colspan="3"></th>
+    </tr>
+    <tbody>
+      <% @user.tasks.each do |task| %>
+        <tr class= "tr_list">
+          <td><%= task.title %></td>
+          <td><%= task.content %></td>
+          <td><%= task.deadline %></td>
+          <td><%= task.status_i18n %></td>
+          <td><%= task.priority_i18n %></td>
+          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
