@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
+    if @user.save
         redirect_to admin_users_path
       else
         render :new
@@ -24,15 +24,15 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
-     redirect_to admin_users_path(@user)
-   else
-     render :edit
-   end
+      redirect_to admin_users_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,13 +41,18 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def if_not_admin
-    redirect_to root_path unless current_user.admin?
-  end
-  def set_user
-    @user = User.find(params[:id])
-  end
-  def user_params
-    params.require(:user).permit(:name, :email, :admin, :password, :password_confimation)
-  end
+    def if_not_admin
+      unless current_user.admin?
+        redirect_to root_path
+        flash[:notice]="管理者以外はアクセスできません"
+      end
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :admin, :password, :password_confimation)
+    end
 end
