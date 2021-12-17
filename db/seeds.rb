@@ -19,7 +19,7 @@ Label.create!([
   { name: 'ペット' }
 ])
 User.create!(
-   email: 'test@test.com',
+   email: 'te@test.com',
    name: 'テスト太郎',
    name: 'admin',
    password: '123456',
