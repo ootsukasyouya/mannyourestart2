@@ -14,6 +14,12 @@
   <strong>deadline:</strong>
   <%= @task.deadline %>
 </p>
+<p>
+  <strong>label:</strong>
+  <% @task.labels.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
