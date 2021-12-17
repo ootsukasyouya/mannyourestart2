@@ -8,6 +8,7 @@
       <th>日付</th>
       <th>進行状態</th>
       <th>優先度</th>
+      <th>ラベル</th>
       <th colspan="3"></th>
     </tr>
 
@@ -21,6 +22,10 @@
           <td><%= task.deadline %></td>
           <td><%= task.status_i18n %></td>
           <td><%= task.priority_i18n %></td>
+          <td><% task.labels.each do |label| %>
+              <%= label.name %>
+              <% end %>
+          </td>
           <td><%= link_to 'Show', task %></td>
           <td><%= link_to 'Edit', edit_task_path(task) %></td>
           <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,9 +34,11 @@
     </tbody>
   </table>
 </div>
-<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: 'btn btn-default' %>
-<%= link_to "優先順位でソートする", tasks_path(sort_2: "true"), class: 'btn btn-default' %>
 
+<%= form_with url: tasks_path, method: :get, local: true do |form| %>
+  <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
+  <%= form.submit 'Search', name: nil %>
+<% end %>
 
 <div class="search_form">
   <%= form_with url:tasks_path,method: :get, local: true do |search| %>
@@ -51,6 +58,9 @@
   <% end %>
 </div>
 
+
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: 'btn btn-default' %>
+<%= link_to "優先順位でソートする", tasks_path(sort_2: "true"), class: 'btn btn-default' %>
 <%= link_to '新しいタスクの作成', new_task_path , class: 'btn btn-default'%>
 
 <%= paginate @tasks, theme: 'twitter-bootstrap-4' %>

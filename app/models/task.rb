@@ -13,4 +13,6 @@ class Task < ApplicationRecord
   #     where("title like?", "%#{keyword}%")
   # end
   belongs_to :user
+  has_many :labellings, dependent: :destroy
+  has_many :labels, through: :labellings
 end
