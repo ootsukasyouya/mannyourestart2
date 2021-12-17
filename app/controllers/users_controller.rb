@@ -31,8 +31,9 @@ class UsersController < ApplicationController
   end
   def ensure_current_user
     if current_user.present?
-      flash[:notice]="権限がありません"
       redirect_to tasks_path
+      flash[:notice]="権限がありません"
+
     end
   end
 
