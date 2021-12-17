@@ -10,3 +10,10 @@ name: 'テストユーザー',
 email: 'test@test123',
 password_digest: 'password'
 )
+User.create!(
+  name: 'adminuser',
+  email: 'admin@example.com',
+  password: 'admin1',
+  password_confirmation: 'admin1',
+  admin: true
+)

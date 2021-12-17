@@ -1,9 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :if_not_admin
-  before_action :set_user, only: [:show, :edit, :destroy, :update]
+  before_action :set_user, only: %i[ show edit destroy update]
 
   def index
-   # @users = User.all.order(created_at: :desc)
    @users = User.select(:id, :name, :email, :admin).order(created_at: :desc).includes(:tasks)
   end
 
@@ -27,9 +26,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path
+      redirect_to admin_users_path(@user)
     else
       render :edit
     end
