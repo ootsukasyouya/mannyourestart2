@@ -25,16 +25,90 @@
 #    password: '123456',
 #    admin: true
 # )
-10.times do |n|
-  User.create!(
-    email: "test#{n + 1}@test.com",
-    name: "test_user#{n + 1}",
-    password: '12345',
-  )
-end
-  10.times do |n|
+# 10.times do |n|
+#   User.create!(
+#     email: "test#{n + 1}@test.com",
+#     name: "test_user#{n + 1}",
+#     password: '123456',
+#   )
+# end
     Task.create!(
-      title:"test_task#{n+1}",
-      content:"test#{n+1}",
+      user_id: User.find(1).id,
+      title: "test1",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
     )
-  end
+    Task.create!(
+      user_id: User.find(2).id,
+      title: "test2",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(3).id,
+      title: "test3",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(4).id,
+      title: "test4",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(5).id,
+      title: "test5",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(6).id,
+      title: "test6",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(7).id,
+      title: "test7",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(8).id,
+      title: "test8",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(9).id,
+      title: "test9",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
+    Task.create!(
+      user_id: User.find(10).id,
+      title: "test10",
+      content: "test",
+      deadline: "2020-12-01",
+      status: 0,
+      priority: 0
+    )
