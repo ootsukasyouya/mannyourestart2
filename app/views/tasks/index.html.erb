@@ -2,6 +2,7 @@
   <table class="table table-striped">
     <p id="notice"><%= notice %></p>
     <tr>
+      <th>User Name</th>
       <th>タイトル</th>
       <th>内容</th>
       <th>日付</th>
@@ -14,6 +15,7 @@
     <tbody>
       <% @tasks.each do |task| %>
         <tr class= "tr_list">
+          <td><%= task.user.name %></td>
           <td><%= task.title %></td>
           <td><%= task.content %></td>
           <td><%= task.deadline %></td>

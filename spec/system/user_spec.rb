@@ -84,13 +84,13 @@ RSpec.describe 'ユーザ管理機能', type: :system do
       end
     end
     context '一般ユーザが管理画面にアクセスした時' do
-      it '管理者以外はアクセスできません' do
+      it '権限がありません' do
         visit new_session_path
         fill_in 'Email', with: 'test1@email.com'
         fill_in 'Password', with: 'test123'
         click_button 'Log in'
         visit admin_users_path
-        expect(page).to have_content '管理者以外はアクセスできません'
+        expect(page).to have_content '権限がありません'
       end
     end
     context '管理ユーザがユーザの新規登録を押した時' do
@@ -129,7 +129,7 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         click_button 'Log in'
         visit admin_users_path
         all('tbody tr')[0].click_link '編集'
-        fill_in 'Name', with: 'purupuru'
+        fill_in 'user_name', with: 'purupuru'
         click_button '送信する'
         expect(page).to have_content 'purupuru'
       end

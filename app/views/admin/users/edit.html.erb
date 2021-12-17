@@ -2,9 +2,11 @@
 <h1>管理者 ユーザー編集画面</h1>
 
 <%= form_with(model: [:admin, @user], local: true ) do |f| %>
-      <%= f.label :name %>
+      <%= f.label :名前 %>
       <%= f.text_field :name %>
+      <%= f.label :メール %>
       <%= f.email_field :email %>
+      <%= f.label :管理者 %>
       <%= f.check_box :admin %>
   <%= f.submit '送信する'%>
 
