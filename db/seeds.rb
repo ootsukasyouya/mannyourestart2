@@ -5,11 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(
-   email: 'test@test.com',
-   name: 'テスト太郎',
-   password: '123456',
-)
+
 5.times do |n|
   User.create!(
     email: "test#{n + 1}@test.com",
@@ -28,13 +24,7 @@ end
     )
   end
 end
-User.create!(
-  name: 'adminuser',
-  email: 'admin@example.com',
-  password: 'admin1',
-  password_confirmation: 'admin1',
-  admin: true
-)
+
 Label.create!([
   { name: '仕事' },
   { name: '私用' },
