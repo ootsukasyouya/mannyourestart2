@@ -35,6 +35,6 @@ Label.create!([
   { name: '運動' },
   { name: '資格' },
   { name: 'テスト' },
-  { name: '料理' }
+  { name: '料理' },
   { name: 'ペット' }
 ])
