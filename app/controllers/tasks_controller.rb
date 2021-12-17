@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks
+    @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     # @tasks = Task.all.includes(:task).order(created_at: :desc).page(params[:page])
     if params[:sort_expired]
       @tasks = @tasks.order(deadline: :desc).page(params[:page])
@@ -83,6 +84,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+      params.require(:task).permit(:title, :content, :deadline, :status, :priority, { label_ids: [] })
     end
 end

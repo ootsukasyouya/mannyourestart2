@@ -5,15 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(
-name: 'テストユーザー',
-email: 'test@test123',
-password_digest: 'password'
-)
-User.create!(
-  name: 'adminuser',
-  email: 'admin@example.com',
-  password: 'admin1',
-  password_confirmation: 'admin1',
-  admin: true
-)
+# User.create(
+# name: 'テストユーザー',
+# email: 'test@test123',
+# password_digest: 'password'
+# )
+# User.create!(
+#   name: 'adminuser',
+#   email: 'admin@example.com',
+#   password: 'admin1',
+#   password_confirmation: 'admin1',
+#   admin: true
+# )
+Label.create!([
+  { name: '仕事' },
+  { name: '私用' },
+  { name: '会食' },
+  { name: '実家' },
+  { name: '家族' }
+])
