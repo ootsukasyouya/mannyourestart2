@@ -30,8 +30,8 @@ Label.create!([
   { name: '私用' },
   { name: '会食' },
   { name: '実家' },
-  { name: '家族' }
-  { name: '子供' }
+  { name: '家族' },
+  { name: '子供' },
   { name: '運動' },
   { name: '資格' },
   { name: 'テスト' },
