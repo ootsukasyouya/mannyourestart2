@@ -5,22 +5,46 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# User.create(
-# name: 'テストユーザー',
-# email: 'test@test123',
-# password_digest: 'password'
-# )
-# User.create!(
-#   name: 'adminuser',
-#   email: 'admin@example.com',
-#   password: 'admin1',
-#   password_confirmation: 'admin1',
-#   admin: true
-# )
+User.create!(
+   email: 'test@test.com',
+   name: 'テスト太郎',
+   password: '12345',
+)
+5.times do |n|
+  User.create!(
+    email: "test#{n + 1}@test.com",
+    name: "test_user#{n + 1}",
+    password: '12345',
+  )
+end
+5.times do |m|
+  5.times do |n|
+    Task.create!(
+      title:"test_task#{n+1}",
+      content:"test#{n+1}",
+      status:"未着手",
+      deadline:"2022-01-01",
+      user_id: m+2
+    )
+  end
+end
+User.create!(
+  name: 'adminuser',
+  email: 'admin@example.com',
+  password: 'admin1',
+  password_confirmation: 'admin1',
+  admin: true
+)
 Label.create!([
   { name: '仕事' },
   { name: '私用' },
   { name: '会食' },
   { name: '実家' },
   { name: '家族' }
+  { name: '子供' }
+  { name: '運動' },
+  { name: '資格' },
+  { name: 'テスト' },
+  { name: '料理' }
+  { name: 'ペット' }
 ])

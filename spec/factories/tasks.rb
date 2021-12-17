@@ -20,7 +20,7 @@ FactoryBot.define do
     content { 'test_content3' }
     deadline {'2020-12-01'}
     status {'完了'}
-      priority {'中'}
-      user
+    priority {'中'}
+    user
   end
 end

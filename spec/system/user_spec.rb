@@ -117,7 +117,7 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         click_button 'Log in'
         visit admin_users_path
         all('tbody tr')[1].click_link '詳細'
-        # click_on '詳細'
+        click_on '詳細'
         expect(page).to have_content 'test1のページ'
       end
     end
